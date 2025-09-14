@@ -2,7 +2,7 @@
 const codeContainer = document.querySelector(".code-container");
 const nums = Array.from({length:10}, (_,i) => i)
 document.addEventListener("DOMContentLoaded", ()=> {
-	// codeContainer.children[0].focus()
+	codeContainer.children[0].focus()
 })
 
 document.addEventListener("keydown", (e)=>{
