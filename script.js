@@ -8,14 +8,24 @@ document.addEventListener("DOMContentLoaded", ()=> {
 document.addEventListener("keydown", (e)=>{
 	const key = e.key;
 	const inputs = Array.from(codeContainer.children)
-	if(!isNaN(key) && nums.includes(parseInt(key))){
-		for(let input of inputs){
-			if(!input.value){
-				input.focus()
-				break;
-			}
-		}
-	}
+    const activeIndex = inputs.findIndex(input => input === document.activeElement);
+	// if(!isNaN(key) && nums.includes(parseInt(key))){
+	// 	for(let input of inputs){
+	// 		if(!input.value){
+	// 			input.focus()
+	// 			break;
+	// 		}
+	// 	}
+	// }
+
+	if (!isNaN(key) && nums.includes(parseInt(key))) {
+	    if (activeIndex >= 0 && activeIndex < inputs.length - 1) {
+	      setTimeout(() => {
+	        inputs[activeIndex + 1].focus();
+	      }, 0); // Let the current input receive the key first
+	    }
+	  }
+	
 	if(key === "Backspace"){
 		const activeElement = document.activeElement
 		for(let i=0; i<inputs.length; i++){
